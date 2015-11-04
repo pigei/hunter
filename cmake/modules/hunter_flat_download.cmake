@@ -19,11 +19,11 @@ include(hunter_user_error)
 #will download a package in a common folder instead of [hunter-id]/[config-id]/[toolchain-id].
 #this is useful for pre-built packages that do not change often or that are already prepared in tarballs
 #all packages will be deflated into HUNTER_LOCAL_DOWNLOAD_PATH
-function(hunter_simple_download)
+function(hunter_flat_download)
   set(one PACKAGE_NAME PACKAGE_COMPONENT PACKAGE_INTERNAL_DEPS_ID PACKAGE_USR PACKAGE_PSW)
   set(multiple PACKAGE_DEPENDS_ON)
 
-  MESSAGE(STATUS "Good day. This is hunter_simple_download %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+  hunter_status_debug("Good day. This is hunter_simple_download %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 
   cmake_parse_arguments(HUNTER "" "${one}" "${multiple}" ${ARGV})
   # -> HUNTER_PACKAGE_NAME
