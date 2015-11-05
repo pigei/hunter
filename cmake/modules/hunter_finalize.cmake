@@ -71,6 +71,13 @@ macro(hunter_finalize)
 
   set(HUNTER_INSTALL_PREFIX "${HUNTER_TOOLCHAIN_ID_PATH}/Install")
   list(APPEND CMAKE_PREFIX_PATH "${HUNTER_INSTALL_PREFIX}")
+  
+  if (DEFINED HUNTER_FLAT_DOWNLOAD_PATH)
+	if (NOT HUNTER_INSTALL_PREFIX STREQUAL HUNTER_FLAT_DOWNLOAD_PATH)
+	  list(APPEND CMAKE_PREFIX_PATH "${HUNTER_FLAT_DOWNLOAD_PATH}")
+	endif()
+  endif()
+  
   if(ANDROID)
     # OpenCV support: https://github.com/ruslo/hunter/issues/153
     list(APPEND CMAKE_PREFIX_PATH "${HUNTER_INSTALL_PREFIX}/sdk/native/jni")
@@ -100,19 +107,20 @@ macro(hunter_finalize)
   endif()
 
   ### Disable package registry
-  ### http://www.cmake.org/cmake/help/v3.1/manual/cmake-packages.7.html#disabling-the-package-registry
-  set(CMAKE_EXPORT_NO_PACKAGE_REGISTRY ON)
-  set(CMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY ON)
-  set(CMAKE_FIND_PACKAGE_NO_SYSTEM_PACKAGE_REGISTRY ON)
-  ### -- end
+  if (NOT HUNTER_KEEP_CMAKE_FIND)
+	  ### http://www.cmake.org/cmake/help/v3.1/manual/cmake-packages.7.html#disabling-the-package-registry
+	  set(CMAKE_EXPORT_NO_PACKAGE_REGISTRY ON)
+	  set(CMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY ON)
+	  set(CMAKE_FIND_PACKAGE_NO_SYSTEM_PACKAGE_REGISTRY ON)
+	  ### -- end
 
-  ### Disable environment variables
-  ### http://www.cmake.org/cmake/help/v3.3/command/find_package.html
-  set(ENV{CMAKE_PREFIX_PATH} "")
-  set(ENV{CMAKE_FRAMEWORK_PATH} "")
-  set(ENV{CMAKE_APPBUNDLE_PATH} "")
-  ### -- end
-
+	  ### Disable environment variables
+	  ### http://www.cmake.org/cmake/help/v3.3/command/find_package.html
+	  set(ENV{CMAKE_PREFIX_PATH} "")
+	  set(ENV{CMAKE_FRAMEWORK_PATH} "")
+	  set(ENV{CMAKE_APPBUNDLE_PATH} "")
+	  ### -- end
+  endif()
   ### 1. Clear all '<NAME>_ROOT' variables (cache, environment, ...)
   ### 2. Set '<NAME>_ROOT' or 'HUNTER_<name>_VERSION' variables
   set(HUNTER_ALLOW_CONFIG_LOADING YES)
