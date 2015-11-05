@@ -47,8 +47,13 @@ function(hunter_flat_download)
   hunter_test_string_not_empty("${HUNTER_PACKAGE_NAME}")
   hunter_test_string_not_empty("${HUNTER_TOOLCHAIN_ID_PATH}")
   hunter_test_string_not_empty("${HUNTER_CACHE_FILE}")
-  hunter_test_string_not_empty("${HUNTER_FLAT_DOWNLOAD_PATH}")
   
+  string(COMPARE EQUAL "${HUNTER_FLAT_DOWNLOAD_PATH}" "" hunter_has_flat_path)
+  if (hunter_has_flat_path)
+	hunter_status_print("HUNTER_FLAT_DOWNLOAD_PATH not set. Packages will be downloaded in ${HUNTER_INSTALL_PREFIX} instead")
+	SET(HUNTER_FLAT_DOWNLOAD_PATH "${HUNTER_INSTALL_PREFIX}")
+  endif()
+   
   string(COMPARE NOTEQUAL "${HUNTER_BINARY_DIR}" "" hunter_has_binary_dir)
   string(COMPARE NOTEQUAL "${HUNTER_PACKAGE_COMPONENT}" "" hunter_has_component)
   string(COMPARE NOTEQUAL "${CMAKE_TOOLCHAIN_FILE}" "" hunter_has_toolchain)
@@ -322,6 +327,11 @@ function(hunter_flat_download)
 	string(CONFIGURE ${HUNTER_PACKAGE_URL} HUNTER_PACKAGE_URL @ONLY)
 	UNSET(user)
 	UNSET(password)
+  else()
+	#verify that the URL does not contain user password variable:
+	IF("${HUNTER_PACKAGE_URL}" MATCHES "@password@")
+		hunter_internal_error("URL requires authentication but no HUNTER_PACKAGE_USR and HUNTER_PACKAGE_PSW was provided")
+	endif()
   endif()
 
   # print info before start generation/run

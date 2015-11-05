@@ -12,20 +12,20 @@ function(hunter_local_server)
   set(one PROTOCOL ADDRESS FOLDER)
   cmake_parse_arguments(HUNTER_SERVER "${options}" "${one}" "" ${ARGV})
   
-  hunter_status_print("Hunter will serve library from  ${HUNTER_SERVER_PROTOCOL}://${HUNTER_SERVER_ADDRESS}/${HUNTER_SERVER_FOLDER} with authentication")
+  hunter_status_print("Hunter will serve libraries from  ${HUNTER_SERVER_PROTOCOL}://${HUNTER_SERVER_ADDRESS}/${HUNTER_SERVER_FOLDER} with authentication")
 
   if (HUNTER_SERVER_AUTH)
 
 	#prepare parameter for server authentication if required
 	hunter_authentication(HUNTER_SERVER)
 	
-	SET(HUNTER_SERVER_URL ${HUNTER_SERVER_PROTOCOL}://@user@:@password@@${HUNTER_SERVER_ADDRESS}/${HUNTER_SERVER_FOLDER} CACHE STRING "Library URL" FORCE)
+	SET(HUNTER_SERVER_URL ${HUNTER_SERVER_PROTOCOL}://@user@:@password@@${HUNTER_SERVER_ADDRESS}/${HUNTER_SERVER_FOLDER} CACHE INTERNAL "Library URL")
 
 	
 	hunter_status_print("Remember to set HUNTER_SERVER_USR and HUNTER_SERVER_PSW")
   else()
  
-	SET(HUNTER_SERVER_URL "${HUNTER_SERVER_PROTOCOL}://${HUNTER_SERVER_ADDRESS}/${HUNTER_SERVER_FOLDER}" CACHE STRING  "Library URL" FORCE)
+	SET(HUNTER_SERVER_URL "${HUNTER_SERVER_PROTOCOL}://${HUNTER_SERVER_ADDRESS}/${HUNTER_SERVER_FOLDER}" CACHE INTERNAL  "Library URL")
 
   endif()  
   MARK_AS_ADVANCED(HUNTER_SERVER_URL)
