@@ -23,7 +23,7 @@ function(hunter_flat_download)
   set(one PACKAGE_NAME PACKAGE_COMPONENT PACKAGE_INTERNAL_DEPS_ID PACKAGE_USR PACKAGE_PSW)
   set(multiple PACKAGE_DEPENDS_ON)
 
-  hunter_status_debug("Good day. This is hunter_simple_download %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+  hunter_status_debug("Good day. This is hunter_flat_download %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 
   cmake_parse_arguments(HUNTER "" "${one}" "${multiple}" ${ARGV})
   # -> HUNTER_PACKAGE_NAME
@@ -73,17 +73,26 @@ function(hunter_flat_download)
 
   # Set <LIB>_ROOT variables
   set(h_name "${HUNTER_PACKAGE_NAME}") # Foo
+  set(h_component "${HUNTER_COMPONENT}") # Core
   string(TOUPPER "${HUNTER_PACKAGE_NAME}" root_name) # FOO
   set(root_name "${root_name}_ROOT") # FOO_ROOT
 
   set(HUNTER_PACKAGE_VERSION "${HUNTER_${h_name}_VERSION}")
   set(ver "${HUNTER_PACKAGE_VERSION}")
-  set(HUNTER_PACKAGE_URL "${HUNTER_${h_name}_URL}")
-  set(HUNTER_PACKAGE_SHA1 "${HUNTER_${h_name}_SHA1}")
+
+  IF(hunter_has_component)   #component case. Compose URL accordingly
+    set(HUNTER_PACKAGE_URL "${HUNTER_${h_name}_${h_component}_URL}")
+    set(HUNTER_PACKAGE_SHA1 "${HUNTER_${h_name}_${h_component}_SHA1}")
+  ELSE()#single package case. Use the package name directly 
+	set(HUNTER_PACKAGE_URL "${HUNTER_${h_name}_URL}")
+    set(HUNTER_PACKAGE_SHA1 "${HUNTER_${h_name}_SHA1}")
+  ENDIF()
+
   set(
       HUNTER_PACKAGE_CONFIGURATION_TYPES
       "${HUNTER_${h_name}_CONFIGURATION_TYPES}"
   )
+
   string(COMPARE EQUAL "${HUNTER_PACKAGE_CONFIGURATION_TYPES}" "" no_types)
   if(no_types)
     set(HUNTER_PACKAGE_CONFIGURATION_TYPES ${HUNTER_CACHED_CONFIGURATION_TYPES})

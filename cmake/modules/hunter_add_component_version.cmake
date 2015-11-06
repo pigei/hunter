@@ -8,8 +8,8 @@ include(hunter_status_debug)
 
 # If 'HUNTER_<name>_VERSION' is equal to 'h_VERSION', then
 # this function will set 'HUNTER_<name>_URL' and 'HUNTER_<name>_SHA1'.
-function(hunter_add_version)
-  set(h_one_value PACKAGE_NAME VERSION URL SHA1)
+function(hunter_add_component_version)
+  set(h_one_value PACKAGE_NAME VERSION URL SHA1 COMPONENT)
   cmake_parse_arguments(h "" "${h_one_value}" "" ${ARGV})
   if(h_UNPARSED_ARGUMENTS)
     hunter_internal_error("unexpected argument: ${h_UNPARSED_ARGUMENTS}")
@@ -23,12 +23,10 @@ function(hunter_add_version)
   if(NOT h_URL)
     hunter_internal_error("URL can't be empty")
   endif()
+  if(NOT h_COMPONENT)
+    hunter_internal_error("COMPONENT can't be empty.")
+  endif()
 
-
-  # update HUNTER_<name>_VERSIONS (list of available versions)
-  set(h_versions "HUNTER_${h_PACKAGE_NAME}_VERSIONS")
-  list(APPEND ${h_versions} ${h_VERSION})
-  set(${h_versions} ${${h_versions}} PARENT_SCOPE)
 
   set(expected_version "HUNTER_${h_PACKAGE_NAME}_VERSION")
   string(COMPARE EQUAL "${${expected_version}}" "" version_is_empty)
@@ -48,10 +46,10 @@ function(hunter_add_version)
   endif()
 
   # HUNTER_<name>_VERSION found
-  set(h_url_name "HUNTER_${h_PACKAGE_NAME}_URL")
+  set(h_url_name "HUNTER_${h_PACKAGE_NAME}_${h_COMPONENT}_URL")
   set(${h_url_name} "${h_URL}" PARENT_SCOPE)
   if(h_SHA1)
-	set(h_sha1_name "HUNTER_${h_PACKAGE_NAME}_SHA1")
+	set(h_sha1_name "HUNTER_${h_PACKAGE_NAME}__${h_COMPONENT}_SHA1")
 	set(${h_sha1_name} "${h_SHA1}" PARENT_SCOPE)
   endif()
 endfunction()
