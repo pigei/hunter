@@ -73,7 +73,7 @@ function(hunter_flat_download)
 
   # Set <LIB>_ROOT variables
   set(h_name "${HUNTER_PACKAGE_NAME}") # Foo
-  set(h_component "${HUNTER_COMPONENT}") # Core
+  set(h_component "${HUNTER_PACKAGE_COMPONENT}") # Core
   string(TOUPPER "${HUNTER_PACKAGE_NAME}" root_name) # FOO
   set(root_name "${root_name}_ROOT") # FOO_ROOT
 
@@ -103,7 +103,7 @@ function(hunter_flat_download)
 
   string(COMPARE EQUAL "${HUNTER_PACKAGE_URL}" "" hunter_no_url)
 
-  string(COMPARE EQUAL "${HUNTER_PACKAGE_SHA1}" "" version_not_found)
+  string(COMPARE EQUAL "${HUNTER_PACKAGE_VERSION}" "" version_not_found)
   string(COMPARE EQUAL "${HUNTER_PACKAGE_USR}" "" hunter_no_auth)
   
   if(version_not_found)
@@ -111,7 +111,10 @@ function(hunter_flat_download)
   endif()
 
   hunter_test_string_not_empty("${HUNTER_PACKAGE_URL}")
-  hunter_test_string_not_empty("${HUNTER_PACKAGE_SHA1}")
+  
+  if (NOT hunter_has_component)
+    hunter_test_string_not_empty("${HUNTER_PACKAGE_SHA1}")
+  endif() #else the sha is not needed
 
   hunter_make_directory(
       "${HUNTER_LOCAL_DOWNLOAD_PATH}/${HUNTER_PACKAGE_NAME}-${ver}/download"
@@ -183,12 +186,7 @@ function(hunter_flat_download)
     set(${root_name} "${HUNTER_INSTALL_PREFIX}")
     hunter_status_debug("Install to: ${HUNTER_INSTALL_PREFIX}")
   else()
-    if(hunter_has_component)
-      hunter_internal_error(
-          "Component for non-install package:"
-          " ${HUNTER_PACKAGE_NAME} ${HUNTER_PACKAGE_COMPONENT}"
-      )
-    endif()
+   
     if(HUNTER_PACKAGE_SCHEME_DOWNLOAD)
 	  set(HUNTER_PACKAGE_SOURCE_DIR "${HUNTER_FLAT_DOWNLOAD_PATH}/${HUNTER_PACKAGE_NAME}-${ver}/")
       set(${root_name} "${HUNTER_PACKAGE_SOURCE_DIR}")

@@ -48,8 +48,9 @@ function(hunter_add_component_version)
   # HUNTER_<name>_VERSION found
   set(h_url_name "HUNTER_${h_PACKAGE_NAME}_${h_COMPONENT}_URL")
   set(${h_url_name} "${h_URL}" PARENT_SCOPE)
+
   if(h_SHA1)
-	set(h_sha1_name "HUNTER_${h_PACKAGE_NAME}__${h_COMPONENT}_SHA1")
+	set(h_sha1_name "HUNTER_${h_PACKAGE_NAME}_${h_COMPONENT}_SHA1")
 	set(${h_sha1_name} "${h_SHA1}" PARENT_SCOPE)
   endif()
 endfunction()
