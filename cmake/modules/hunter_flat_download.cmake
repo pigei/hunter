@@ -18,7 +18,7 @@ include(hunter_user_error)
 
 #will download a package in a common folder instead of [hunter-id]/[config-id]/[toolchain-id].
 #this is useful for pre-built packages that do not change often or that are already prepared in tarballs
-#all packages will be deflated into HUNTER_LOCAL_DOWNLOAD_PATH
+#all packages will be deflated into HUNTER_FLAT_DOWNLOAD_PATH
 function(hunter_flat_download)
   set(one PACKAGE_NAME PACKAGE_COMPONENT PACKAGE_INTERNAL_DEPS_ID PACKAGE_USR PACKAGE_PSW)
   set(multiple PACKAGE_DEPENDS_ON)
@@ -117,7 +117,7 @@ function(hunter_flat_download)
   endif() #else the sha is not needed
 
   hunter_make_directory(
-      "${HUNTER_LOCAL_DOWNLOAD_PATH}/${HUNTER_PACKAGE_NAME}-${ver}/download"
+      "${HUNTER_FLAT_DOWNLOAD_PATH}/downloads/${HUNTER_PACKAGE_NAME}-${ver}"
       "${HUNTER_PACKAGE_SHA1}"
       HUNTER_PACKAGE_DOWNLOAD_DIR
   )
@@ -172,16 +172,9 @@ function(hunter_flat_download)
   endif()
   set(HUNTER_PACKAGE_SOURCE_DIR "${HUNTER_PACKAGE_HOME_DIR}/Source")
 
-  if(HUNTER_PACKAGE_CACHEABLE)
-    if(NOT HUNTER_PACKAGE_SCHEME_INSTALL)
-      hunter_internal_error("Non-install packages is cacheable by default")
-    endif()
-    set(HUNTER_PACKAGE_INSTALL_PREFIX "${HUNTER_PACKAGE_HOME_DIR}/Install")
-  else()
-    set(HUNTER_PACKAGE_INSTALL_PREFIX "${HUNTER_INSTALL_PREFIX}")
-  endif()
-    
-  if(HUNTER_PACKAGE_SCHEME_INSTALL)
+  set(HUNTER_PACKAGE_INSTALL_PREFIX "${HUNTER_FLAT_DOWNLOAD_PATH}/${HUNTER_PACKAGE_NAME}-${ver}/")
+ 
+ if(HUNTER_PACKAGE_SCHEME_INSTALL)
     set(HUNTER_INSTALL_PREFIX "${HUNTER_FLAT_DOWNLOAD_PATH}/${HUNTER_PACKAGE_NAME}-${ver}/")
     set(${root_name} "${HUNTER_INSTALL_PREFIX}")
     hunter_status_debug("Install to: ${HUNTER_INSTALL_PREFIX}")
@@ -469,9 +462,8 @@ function(hunter_flat_download)
   file(REMOVE "${HUNTER_DOWNLOAD_TOOLCHAIN}")
   file(REMOVE "${HUNTER_ARGS_FILE}")
 
-  if(HUNTER_PACKAGE_CACHEABLE)
-    file(REMOVE_RECURSE "${HUNTER_PACKAGE_INSTALL_PREFIX}")
-  endif()
+  #make space and remove tarballs
+  file(REMOVE "${HUNTER_PACKAGE_DOWNLOAD_DIR}/*.tar.gz")
 
   file(WRITE "${HUNTER_PACKAGE_DONE_STAMP}" "")
 endfunction()

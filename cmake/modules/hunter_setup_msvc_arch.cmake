@@ -55,6 +55,9 @@ macro(hunter_setup_msvc_arch)
         "${HUNTER_MSVC_ARCH}"
     )
 
+	string(SUBSTRING "${HUNTER_MSVC_ARCH}" 1 4 HUNTER_MSVC_RUNTIME)
+	set(HUNTER_MSVC_RUNTIME "msvc${HUNTER_MSVC_RUNTIME}") #e.g. msvc2013
+	
     # => "???"
     # => "???"
     # => "???"
@@ -98,6 +101,10 @@ macro(hunter_setup_msvc_arch)
       hunter_internal_error("Can't detect generator arch: ${CMAKE_GENERATOR}")
     endif()
 
+	
+	
+	
+	
     unset(_hunter_result_win64)
     unset(_hunter_result_arm)
     unset(_hunter_result_x86)
