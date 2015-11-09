@@ -463,7 +463,9 @@ function(hunter_flat_download)
   file(REMOVE "${HUNTER_ARGS_FILE}")
 
   #make space and remove tarballs
-  file(REMOVE "${HUNTER_PACKAGE_DOWNLOAD_DIR}/*.tar.gz")
+  string(REGEX MATCH  "\\/([^\\/]+)$" _downloadFile  "${HUNTER_PACKAGE_URL}" )
+  hunter_status_debug("Removing downloaded tarball ${HUNTER_PACKAGE_DOWNLOAD_DIR}/${_downloadFile}")
+  file(REMOVE "${HUNTER_PACKAGE_DOWNLOAD_DIR}/${_downloadFile}")
 
   file(WRITE "${HUNTER_PACKAGE_DONE_STAMP}" "")
 endfunction()

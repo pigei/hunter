@@ -9,7 +9,7 @@ include(hunter_status_debug)
 # If 'HUNTER_<name>_VERSION' is equal to 'h_VERSION', then
 # this function will set 'HUNTER_<name>_URL' and 'HUNTER_<name>_SHA1'.
 function(hunter_add_component_version)
-  set(h_one_value PACKAGE_NAME VERSION URL SHA1 COMPONENT)
+  set(h_one_value PACKAGE_NAME VERSION URL SHA1 BUILD COMPONENT)
   cmake_parse_arguments(h "" "${h_one_value}" "" ${ARGV})
   if(h_UNPARSED_ARGUMENTS)
     hunter_internal_error("unexpected argument: ${h_UNPARSED_ARGUMENTS}")
