@@ -1,5 +1,5 @@
 # This is a header-like file, so include guards needed
-if(DEFINED HUNTER_CMAKE_PROJECTS_ZLIB_HUNTER_CMAKE_)
+if(DEFINED HUNTER_CMAKE_PROJECTS_GLEW_HUNTER_CMAKE_)
   return()
 else()
   set(HUNTER_CMAKE_PROJECTS_OPENVDB_HUNTER_CMAKE_ 1)
@@ -23,19 +23,27 @@ hunter_check_local_server() #verify that the local server has been set up
 #...
 
 SET(_buildType ${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH})
-SET(_package_name "zlib")
+SET(_package_name "glew")
 
 # List of versions here...
-if (_buildType STREQUAL "msvc2013-x64")
+if (_buildType STREQUAL "msvc2013-amd64")
 
 	hunter_add_version(
 		PACKAGE_NAME ${_package_name}
-		VERSION     "1.2.8"
-		URL			"${HUNTER_SERVER_URL}/${_package_name}/${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH}/${_package_name}-1.2.8.tar.gz"
-		SHA1	    b50c941c2d13668649a6cbb9418e92e2f0452b9a
+		VERSION     "1.10.0"
+		URL			"${HUNTER_SERVER_URL}/${_package_name}/${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH}/${_package_name}-1.10.0.tar.gz"
+		SHA1	    d2b28fabb383bba283617deb51d20ab316ae02a4
 	)
 
-else ()
+elseif (_buildType STREQUAL "msvc2013-x86")
+
+	hunter_add_version(
+		PACKAGE_NAME ${_package_name}
+		VERSION     "1.10.0"
+		URL			"${HUNTER_SERVER_URL}/${_package_name}/${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH}/${_package_name}-1.10.0.tar.gz"
+		SHA1	    81206df73fbfc0f0aa0d9e85aa2b6886f46c264e
+	)
+else()
 	hunter_fatal_error("No tarball available for ${_package_name} ${_buildType}"   WIKI "error.external.build.missing")
 endif()
 # Probably more versions for real packages...

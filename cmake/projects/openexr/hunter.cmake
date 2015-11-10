@@ -1,8 +1,11 @@
+SET(_package_name "openexr")
+
 # This is a header-like file, so include guards needed
-if(DEFINED HUNTER_CMAKE_PROJECTS_ZLIB_HUNTER_CMAKE_)
+if(DEFINED HUNTER_CMAKE_PROJECTS_${_package_name}_HUNTER_CMAKE_)
+	UNSET(_package_name)
   return()
 else()
-  set(HUNTER_CMAKE_PROJECTS_OPENVDB_HUNTER_CMAKE_ 1)
+  set(HUNTER_CMAKE_PROJECTS${_package_name}_HUNTER_CMAKE_ 1)
 endif()
 
 # Load used modules
@@ -16,27 +19,29 @@ include(hunter_setup_msvc_arch)
 
 hunter_check_local_server() #verify that the local server has been set up
 
-
-
-
-#add dependency packages
-#...
-
 SET(_buildType ${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH})
-SET(_package_name "zlib")
 
 # List of versions here...
-if (_buildType STREQUAL "msvc2013-x64")
+if (_buildType STREQUAL "msvc2013-amd64")
 
 	hunter_add_version(
 		PACKAGE_NAME ${_package_name}
-		VERSION     "1.2.8"
-		URL			"${HUNTER_SERVER_URL}/${_package_name}/${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH}/${_package_name}-1.2.8.tar.gz"
-		SHA1	    b50c941c2d13668649a6cbb9418e92e2f0452b9a
+		VERSION     "2.2.0"
+		URL			"${HUNTER_SERVER_URL}/${_package_name}/${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH}/${_package_name}-2.2.0.tar.gz"
+		SHA1	    2bda9202c2dcb9be932154a5533889f7c24f5a2f
 	)
 
+
+elseif (_buildType STREQUAL "msvc2013-x86")
+
+	hunter_add_version(
+		PACKAGE_NAME ${_package_name}
+		VERSION     "2.2.0"
+		URL			"${HUNTER_SERVER_URL}/${_package_name}/${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH}/${_package_name}-2.2.0.tar.gz"
+		SHA1	    be9252057bcb0c38f5bb0a3243c5399451669728
+	)
 else ()
-	hunter_fatal_error("No tarball available for ${_package_name} ${_buildType}"   WIKI "error.external.build.missing")
+	hunter_fatal_error("No tarball available for ${_package_name} ${_buildType}"  WIKI "error.external.build.missing)
 endif()
 # Probably more versions for real packages...
 

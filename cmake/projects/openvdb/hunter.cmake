@@ -26,7 +26,7 @@ SET(_buildType ${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH})
 SET(_package_name "zlib")
 
 # List of versions here...
-if (_buildType STREQUAL "msvc2013-x64")
+if (_buildType STREQUAL "msvc2013-amd64")
 
 	hunter_add_version(
 		PACKAGE_NAME ${_package_name}

@@ -33,6 +33,8 @@ function(
       qtactiveqt
       qtandroidextras
       qtcore
+	  qtconcurrent
+	  qtopengl
       qtcanvas3d
       qtconnectivity
       qtdeclarative
@@ -100,6 +102,8 @@ function(
   hunter_qt_add_module(NAME qtimageformats COMPONENTS qtcore)
   hunter_qt_add_module(NAME qtserialport COMPONENTS qtcore)
   hunter_qt_add_module(NAME qtgui COMPONENTS qtcore)
+  hunter_qt_add_module(NAME qtconcurrent COMPONENTS qtcore)
+  hunter_qt_add_module(NAME qtopengl COMPONENTS qtcore)
   # --
 
   # --
