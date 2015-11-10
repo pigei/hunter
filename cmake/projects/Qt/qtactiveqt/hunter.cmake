@@ -82,9 +82,11 @@ if(WIN32 AND _is_qtdeclarative)
   endif()
 endif()
 
-hunter_pick_scheme(DEFAULT url_sha1_qt)
-hunter_download(
+
+
+hunter_pick_scheme(DEFAULT url_sha1_unpack_install)
+hunter_flat_download(
     PACKAGE_NAME Qt
     PACKAGE_COMPONENT "qtactiveqt"
-    PACKAGE_INTERNAL_DEPS_ID "5"
+	PACKAGE_USR ${HUNTER_SERVER_USR} PACKAGE_PSW ${HUNTER_SERVER_PSW}
 )

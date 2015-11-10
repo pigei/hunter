@@ -99,6 +99,7 @@ function(
   hunter_qt_add_module(NAME ${ACTIVE_QT} COMPONENTS qtcore)
   hunter_qt_add_module(NAME qtimageformats COMPONENTS qtcore)
   hunter_qt_add_module(NAME qtserialport COMPONENTS qtcore)
+  hunter_qt_add_module(NAME qtgui COMPONENTS qtcore)
   # --
 
   # --

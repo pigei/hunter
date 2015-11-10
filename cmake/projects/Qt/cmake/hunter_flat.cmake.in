@@ -84,10 +84,9 @@ endif()
 
 
 
-hunter_pick_scheme(DEFAULT url_sha1_unpack)
+hunter_pick_scheme(DEFAULT url_sha1_unpack_install)
 hunter_flat_download(
     PACKAGE_NAME Qt
     PACKAGE_COMPONENT "@qt_component@"
-    PACKAGE_INTERNAL_DEPS_ID "5"
 	PACKAGE_USR ${HUNTER_SERVER_USR} PACKAGE_PSW ${HUNTER_SERVER_PSW}
 )

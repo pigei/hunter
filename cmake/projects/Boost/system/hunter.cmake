@@ -1,25 +1,18 @@
-# Copyright (c) 2013, Ruslan Baratov
-# All rights reserved.
 
-if(DEFINED HUNTER_CMAKE_PROJECTS_BOOST_SYSTEM_HUNTER_CMAKE)
+if(DEFINED HUNTER_CMAKE_PROJECTS_BOOST_SYSTEM_HUNTER_CMAKE_)
   return()
 else()
-  set(HUNTER_CMAKE_PROJECTS_BOOST_SYSTEM_HUNTER_CMAKE 1)
+  set(HUNTER_CMAKE_PROJECTS_BOOST_SYSTEM_HUNTER_CMAKE_ 1)
 endif()
 
-include(hunter_download)
+include(hunter_add_package)
+include(hunter_flat_download)
 include(hunter_pick_scheme)
+include(hunter_status_debug)
 
-hunter_pick_scheme(
-    DEFAULT
-    url_sha1_boost_library
-    IPHONEOS
-    url_sha1_boost_ios_library
-)
-
-hunter_download(
-    PACKAGE_NAME
-    Boost
-    PACKAGE_COMPONENT
-    system
+hunter_pick_scheme(DEFAULT url_sha1_unpack_install)
+hunter_flat_download(
+    PACKAGE_NAME Boost
+    PACKAGE_COMPONENT "system"
+	PACKAGE_USR ${HUNTER_SERVER_USR} PACKAGE_PSW ${HUNTER_SERVER_PSW}
 )

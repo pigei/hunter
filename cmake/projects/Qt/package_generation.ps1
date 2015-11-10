@@ -29,12 +29,15 @@ foreach ($d in $dir){
 
     #strip qt from names
     $packageName =  $d.Name
+
+    
     if ($packageName.StartsWith("Qt")){
         $packageName  =$packageName.Substring(2)
     }
+    $package_name_lo = $packageName.toLower()
     
     #define destination file names
-    $packagePath = "Qt$packageName.tar.gz"
+    $packagePath = "qt$package_name_lo.tar.gz"
     #$sha1Path = "$destinationPath\Qt$packageName.sha1"
  
     echo "Packaging Qt$packageName into $packagePath"    
