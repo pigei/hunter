@@ -1,4 +1,3 @@
-MESSAGE("this is static amd64")
 ####Component url and fingerprints
 hunter_add_component_version( PACKAGE_NAME "Boost" VERSION	"1.57.0"
 	COMPONENT core

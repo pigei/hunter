@@ -1,8 +1,8 @@
 # This is a header-like file, so include guards needed
-if(DEFINED HUNTER_CMAKE_PROJECTS_EXAMPLE_HUNTER_CMAKE_)
+if(DEFINED HUNTER_CMAKE_PROJECTS_TCLAP_HUNTER_CMAKE_)
   return()
 else()
-  set(HUNTER_CMAKE_PROJECTS_EXAMPLE_HUNTER_CMAKE_ 1)
+  set(HUNTER_CMAKE_PROJECTS_TCLAP_HUNTER_CMAKE_ 1)
 endif()
 
 # Load used modules
@@ -19,7 +19,7 @@ hunter_check_local_server() #verify that the local server has been set up
 hunter_add_version(
     PACKAGE_NAME tclap
     VERSION     "1.2.1"
-    URL			"${HUNTER_SERVER_URL}/tclap-1.2.1/tclap-1.2.1.tar.gz"
+    URL			"${HUNTER_SERVER_URL}/tclap/tclap-1.2.1.tar.gz"
     SHA1	    cb4d6e872bcd209927a5d306428b27890714d044
 )
 

@@ -35,6 +35,7 @@ hunter_config(tbb VERSION 4.3.2)
 hunter_config(zlib VERSION 1.2.8)
 hunter_config(tclap VERSION 1.2.1)
 hunter_config(glew VERSION 1.10.0)
+hunter_config(wpdpack VERSION 4.1.0)
 
 hunter_config(Android-Apk VERSION 1.1.5)
 hunter_config(Android-Build-Tools VERSION 22.0.1)
