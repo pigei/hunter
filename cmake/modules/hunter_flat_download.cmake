@@ -241,6 +241,18 @@ function(hunter_flat_download)
     return()
   endif()
 
+  #check if already downloaded
+  if(EXISTS "${HUNTER_PACKAGE_DOWNLOAD_DIR}/SHA1")
+	file(READ "${HUNTER_PACKAGE_DOWNLOAD_DIR}/SHA1" $_presentSHA)
+	if ("${_presentSHA}" STREQUAL "${HUNTER_PACKAGE_SHA1}")
+		 hunter_status_debug("Package already downloaded: ${HUNTER_PACKAGE_NAME}")
+		 if(hunter_has_component)
+			hunter_status_debug("Component: ${HUNTER_PACKAGE_COMPONENT}")
+		 endif()
+		 return()
+	endif()
+  endif()
+  
   hunter_lock_directory(
       "${HUNTER_PACKAGE_DOWNLOAD_DIR}" HUNTER_ALREADY_LOCKED_DIRECTORIES
   )
