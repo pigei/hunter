@@ -243,7 +243,7 @@ function(hunter_flat_download)
 
   #check if already downloaded
   if(EXISTS "${HUNTER_PACKAGE_DOWNLOAD_DIR}/SHA1")
-	file(READ "${HUNTER_PACKAGE_DOWNLOAD_DIR}/SHA1" $_presentSHA)
+	file(READ "${HUNTER_PACKAGE_DOWNLOAD_DIR}/SHA1" _presentSHA)
 	if ("${_presentSHA}" STREQUAL "${HUNTER_PACKAGE_SHA1}")
 		 hunter_status_debug("Package already downloaded: ${HUNTER_PACKAGE_NAME}")
 		 if(hunter_has_component)
