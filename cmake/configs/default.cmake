@@ -22,8 +22,11 @@
 include(hunter_config)
 include(hunter_user_error)
 
+
 # NOTE: no names with spaces!
-hunter_config(Qt VERSION 5.5.0)
+hunter_config(Qt VERSION 5.5) #CONFIGURATION_TYPES opengl 
+
+
 hunter_config(Boost VERSION 1.57.0)
 hunter_config(Eigen VERSION 3.2.4)
 hunter_config(openvdb VERSION 3.0.1)

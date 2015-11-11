@@ -1,6 +1,7 @@
 
 Param(
   [string]$root_folder,
+  [string]$build,
   [string]$out_folder
 )
 
@@ -9,17 +10,24 @@ New-Item -ItemType Directory -Force -Path $out_folder
 $outLocation = Get-Item $out_folder
 $destinationPath = $outLocation.FullName
 
-$shaSummaryFile = "$destinationPath/all_sha1.txt"
-echo "########## packaging QT at $root_folder to $full "
+$shaName = $build
+$shaName += "_sha1.txt"
+$shaSummaryFile = "$destinationPath/$shaName"
+echo "########## packaging QT at $root_folder/$build to $full "
 
 
 #move to the folder containing the daa
 Push-Location $root_folder
 
-#get all package by the folder name
-$dir = dir $root_folder\include | ?{$_.PSISContainer}
+#create empty file to keep tar structure
+$tar_base = "pack"
+echo "" | Out-File $tar_base -Encoding "ASCII"
 
-$binFiles = dir $root_folder\bin
+
+#get all package by the folder name
+$dir = dir $build\include | ?{$_.PSISContainer}
+
+$binFiles = dir $build\bin
 
 #initalize summary file
 echo "####SHA1 fingerprints for QT packages####`t" | Out-File $shaSummaryFile -Encoding "ASCII"
@@ -43,23 +51,30 @@ foreach ($d in $dir){
     echo "Packaging Qt$packageName into $packagePath"    
 
     #base structure contains bin, lib and include plus cmake configurations
-    $binList = Get-ChildItem $root_folder\bin |  Where-Object {$_.Name -Like "*$packageName*" } | Foreach-Object {"bin\$_"}
-    $includeList = Get-ChildItem $root_folder\include |  Where-Object {$_.Name -Like "*$packageName*" } | Foreach-Object {"include\$_"}
-    $libList = Get-ChildItem $root_folder\lib |  Where-Object {$_.Name -Like "*$packageName*" } | Foreach-Object {"lib\$_"}
-    $lib_cmakeList = Get-ChildItem $root_folder\lib\cmake |  Where-Object {$_.Name -Like "*$packageName*" } | Foreach-Object {"lib\cmake\$_"}
+    $binList = Get-ChildItem $build/bin |  Where-Object {$_.Name -Like "*$packageName*" } | Foreach-Object {"$build/bin/$_"}
+    $includeList = Get-ChildItem $build/include |  Where-Object {$_.Name -Like "*$packageName*" } | Foreach-Object {"$build/include/$_"}
+    $libList = Get-ChildItem $build/lib |  Where-Object {$_.Name -Like "*$packageName*" } | Foreach-Object {"$build/lib/$_"}
+    $lib_cmakeList = Get-ChildItem $build/lib/cmake |  Where-Object {$_.Name -Like "*$packageName*" } | Foreach-Object {"$build/lib/cmake/$_"}
     
     
     #add specific additional components
     $specificList = @()
     
     if ($packageName -eq "Core"){
-        $exes = Get-ChildItem $root_folder\bin |  Where-Object {$_.Name -Like "*.exe" } | Foreach-Object {"bin\$_"}
+        $exes = Get-ChildItem "$build/bin" |  Where-Object {$_.Name -Like "*.exe" } | Foreach-Object {"$build/bin/$_"}
         $specificList += $exes
-        $specificList += "phrasebooks translations plugins/platforms"
+        $specificList += "$build/mkspecs"
+        $specificList += "$build/phrasebooks"
+        $specificList += "$build/translations"
+        $specificList += "$build/plugins/platforms"
     } 
     
     if ($packageName -eq "Gui"){
-        $specificList += plugins/imageformats
+        $specificList += "$build/plugins/imageformats"
+        $specificList += "$build/plugins/generic"
+    }
+    if ($packageName -eq "Network"){
+        $specificList += "$build/plugins/bearer"
     }
     #.....
     #..... 
@@ -67,9 +82,10 @@ foreach ($d in $dir){
     
     #make package  
     echo "tar czf $packagePath" $binList $includeList $libList $lib_cmakeList $specificList
-    tar czf $packagePath $binList $includeList $libList $lib_cmakeList $specificList
+    tar czf $packagePath $tar_base $binList $includeList $libList $lib_cmakeList $specificList
+      
     Move-Item $packagePath $destinationPath\$packagePath
-   
+
     #get fingerprint
     $shaResult = (openssl sha1 $destinationPath\$packagePath)
     

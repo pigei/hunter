@@ -29,51 +29,51 @@ function(
 
   set(
       all_components
-      qt3d
-      qtactiveqt
-      qtandroidextras
-      qtcore
-	  qtconcurrent
-	  qtopengl
-      qtcanvas3d
-      qtconnectivity
-      qtdeclarative
-      qtdoc
-      qtenginio
-      qtgraphicaleffects
-      qtimageformats
-      qtlocation
-      qtmacextras
-      qtmultimedia
-      qtquick1
-      qtquickcontrols
-      qtscript
-      qtsensors
-      qtserialport
-      qtsvg
-      qttools
-      qttranslations
-      qtwayland
-      qtwebchannel
-      qtwebengine
-      qtwebkit
-      qtwebkit-examples
-      qtwebsockets
-      qtwinextras
-      qtx11extras
-      qtxmlpatterns
+      3d
+      activeqt
+      androidextras
+      core
+	  concurrent
+	  opengl
+      canvas3d
+      connectivity
+      declarative
+      doc
+      enginio
+      graphicaleffects
+      imageformats
+      location
+      macextras
+      multimedia
+      quick1
+      quickcontrols
+      script
+      sensors
+      serialport
+      svg
+      tools
+      translations
+      wayland
+      webchannel
+      webengine
+      webkit
+      webkit-examples
+      websockets
+      winextras
+      x11extras
+      xmlpatterns
   )
 
   # This is modified copy/paste code from <qt-sources>/qt.pro
 
   if(is_android)
-    set(ANDROID_EXTRAS qtandroidextras)
+    set(ANDROID_EXTRAS androidextras)
   else()
     set(ANDROID_EXTRAS "")
   endif()
 
   if(is_win32)
-    set(ACTIVE_QT qtactiveqt)
+    set(ACTIVE_QT activeqt)
   else()
     # Project MESSAGE: ActiveQt is a Windows Desktop-only module. Will just generate a docs target.
     set(ACTIVE_QT "")
@@ -83,83 +83,88 @@ function(
   # from section below.
 
   # Components are in list but not exists in fact:
-  # * qtdocgallery
-  # * qtfeedback
-  # * qtpim
-  # * qtsystems
+  # * docgallery
+  # * feedback
+  # * pim
+  # * systems
 
   # Depends on nothing
-  hunter_qt_add_module(NAME qtcore)
+  hunter_qt_add_module(NAME core)
   # --
 
-  # Depends only on qtcore
-  hunter_qt_add_module(NAME qtandroidextras COMPONENTS qtcore)
-  hunter_qt_add_module(NAME qtmacextras COMPONENTS qtcore)
-  hunter_qt_add_module(NAME qtx11extras COMPONENTS qtcore)
-  hunter_qt_add_module(NAME qtsvg COMPONENTS qtcore)
-  hunter_qt_add_module(NAME qtxmlpatterns COMPONENTS qtcore)
-  hunter_qt_add_module(NAME ${ACTIVE_QT} COMPONENTS qtcore)
-  hunter_qt_add_module(NAME qtimageformats COMPONENTS qtcore)
-  hunter_qt_add_module(NAME qtserialport COMPONENTS qtcore)
-  hunter_qt_add_module(NAME qtgui COMPONENTS qtcore)
-  hunter_qt_add_module(NAME qtconcurrent COMPONENTS qtcore)
-  hunter_qt_add_module(NAME qtopengl COMPONENTS qtcore)
-  # --
-
-  # --
-  hunter_qt_add_module(NAME qtdeclarative COMPONENTS qtcore qtsvg qtxmlpatterns)
-  # --
-
-  # Depends only on qtcore/qtdeclarative
-  hunter_qt_add_module(NAME qtcanvas3d COMPONENTS qtdeclarative)
-  hunter_qt_add_module(NAME qtdoc COMPONENTS qtdeclarative)
-  hunter_qt_add_module(NAME qtenginio COMPONENTS qtdeclarative)
-  hunter_qt_add_module(NAME qtgraphicaleffects COMPONENTS qtdeclarative)
-  hunter_qt_add_module(NAME qtmultimedia COMPONENTS qtcore qtdeclarative)
-  hunter_qt_add_module(NAME qtsensors COMPONENTS qtcore qtdeclarative)
-  hunter_qt_add_module(NAME qtwayland COMPONENTS qtcore qtdeclarative)
-  hunter_qt_add_module(NAME qtwebsockets COMPONENTS qtcore qtdeclarative)
+  # Depends only on core
+  hunter_qt_add_module(NAME androidextras COMPONENTS core)
+  hunter_qt_add_module(NAME macextras COMPONENTS core)
+  hunter_qt_add_module(NAME x11extras COMPONENTS core)
+  hunter_qt_add_module(NAME svg COMPONENTS core)
+  hunter_qt_add_module(NAME xmlpatterns COMPONENTS core)
+  hunter_qt_add_module(NAME ${ACTIVE_QT} COMPONENTS core)
+  hunter_qt_add_module(NAME imageformats COMPONENTS core)
+  hunter_qt_add_module(NAME serialport COMPONENTS core)
+  hunter_qt_add_module(NAME gui COMPONENTS core)
+  hunter_qt_add_module(NAME widget COMPONENTS core)
+  hunter_qt_add_module(NAME concurrent COMPONENTS core)
   # --
 
   # --
-  hunter_qt_add_module(NAME qtquickcontrols COMPONENTS qtdeclarative qtgraphicaleffects)
-  hunter_qt_add_module(NAME qtwinextras COMPONENTS qtcore qtdeclarative qtmultimedia)
-  hunter_qt_add_module(NAME qtlocation COMPONENTS qtcore qtdeclarative)
-  hunter_qt_add_module(NAME qtconnectivity COMPONENTS qtcore ${ANDROID_EXTRAS} qtdeclarative)
-  hunter_qt_add_module(NAME qtwebchannel COMPONENTS qtcore qtdeclarative qtwebsockets)
-  hunter_qt_add_module(NAME qt3d COMPONENTS qtdeclarative qtimageformats)
+  hunter_qt_add_module(NAME declarative COMPONENTS core svg xmlpatterns)
+  # --
+
+  
+  
+    hunter_qt_add_module(NAME opengl COMPONENTS core widget)
+  
+  
+  # Depends only on core/declarative
+  hunter_qt_add_module(NAME canvas3d COMPONENTS declarative)
+  hunter_qt_add_module(NAME doc COMPONENTS declarative)
+  hunter_qt_add_module(NAME enginio COMPONENTS declarative)
+  hunter_qt_add_module(NAME graphicaleffects COMPONENTS declarative)
+  hunter_qt_add_module(NAME multimedia COMPONENTS core declarative)
+  hunter_qt_add_module(NAME sensors COMPONENTS core declarative)
+  hunter_qt_add_module(NAME wayland COMPONENTS core declarative)
+  hunter_qt_add_module(NAME websockets COMPONENTS core declarative)
   # --
 
   # --
-  hunter_qt_add_module(NAME qtwebkit COMPONENTS qtdeclarative qtlocation qtmultimedia qtsensors qtwebchannel)
+  hunter_qt_add_module(NAME quickcontrols COMPONENTS declarative graphicaleffects)
+  hunter_qt_add_module(NAME winextras COMPONENTS core declarative multimedia)
+  hunter_qt_add_module(NAME location COMPONENTS core declarative)
+  hunter_qt_add_module(NAME connectivity COMPONENTS core ${ANDROID_EXTRAS} declarative)
+  hunter_qt_add_module(NAME webchannel COMPONENTS core declarative websockets)
+  hunter_qt_add_module(NAME 3d COMPONENTS declarative imageformats)
   # --
 
   # --
-  hunter_qt_add_module(NAME qttools COMPONENTS qtcore qtdeclarative ${ACTIVE_QT} qtwebkit)
-  hunter_qt_add_module(NAME qtwebengine COMPONENTS qtquickcontrols qtwebchannel qtwebkit qtlocation)
+  hunter_qt_add_module(NAME webkit COMPONENTS declarative location multimedia sensors webchannel)
   # --
 
   # --
-  hunter_qt_add_module(NAME qtwebkit-examples COMPONENTS qtwebkit qttools)
-  hunter_qt_add_module(NAME qtscript COMPONENTS qtcore qttools)
-  hunter_qt_add_module(NAME qttranslations COMPONENTS qttools)
+  hunter_qt_add_module(NAME tools COMPONENTS core declarative ${ACTIVE_QT} webkit)
+  hunter_qt_add_module(NAME webengine COMPONENTS quickcontrols webchannel webkit location)
   # --
 
   # --
-  hunter_qt_add_module(NAME qtquick1 COMPONENTS qtscript qtsvg qtxmlpatterns qtwebkit)
+  hunter_qt_add_module(NAME webkit-examples COMPONENTS webkit tools)
+  hunter_qt_add_module(NAME script COMPONENTS core tools)
+  hunter_qt_add_module(NAME translations COMPONENTS tools)
   # --
 
-  string(COMPARE EQUAL "${component_name}" "qtcore" is_qtcore)
+  # --
+  hunter_qt_add_module(NAME quick1 COMPONENTS script svg xmlpatterns webkit)
+  # --
+
+  string(COMPARE EQUAL "${component_name}" "core" is_core)
   string(COMPARE EQUAL "${component_${component_name}_depends_on}" "" depends_on_nothing)
-  if(is_qtcore)
+  if(is_core)
     if(NOT depends_on_nothing)
-      hunter_internal_error("qtcore should not depends on anything")
+      hunter_internal_error("core should not depends on anything")
     endif()
   else()
     if(depends_on_nothing)
       hunter_internal_error(
           "component `${component_name}` should have at least one dependency:"
-          " qtcore"
+          " core"
       )
     endif()
   endif()

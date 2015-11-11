@@ -24,7 +24,7 @@ function(
   hunter_test_string_not_empty("${nobuild_varname}")
   hunter_test_string_not_empty("${qt_version}")
 
-  if(qt_version MATCHES "^5\\.5\\.")
+  if(qt_version MATCHES "^5\\.5")
     hunter_generate_qt_5_5_info(
         "${component_name}"
         toskip

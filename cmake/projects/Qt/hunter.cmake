@@ -19,15 +19,17 @@ include(hunter_report_broken_package)
 include(hunter_flat_download)
 include(hunter_local_server)
 include(hunter_setup_msvc_arch)
+include(hunter_qt_prefix_path) 
+
 hunter_check_local_server() #verify that the local server has been set up
 
-SET(HUNTER_PACKAGE_URL "${HUNTER_SERVER_URL}/Qt/5.5.0/${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH}-opengl")
+SET(HUNTER_PACKAGE_URL "${HUNTER_SERVER_URL}/Qt/5.5/${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH}")
 hunter_add_version(
     PACKAGE_NAME Qt
-    VERSION "5.5.0"
+    VERSION "5.5"
     URL  "${HUNTER_PACKAGE_URL}"
 )
-include(components_version5_5_0) #include all components detail for version 5.5.0
+include(components_5_5_${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH}) #include all components detail for version 5.5.0
 
 
 if(NOT APPLE AND NOT WIN32)
@@ -50,4 +52,7 @@ if(IOS)
 endif()
 
 #include at least core component
-include("${CMAKE_CURRENT_LIST_DIR}/qtcore/hunter.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/core/hunter.cmake")
+
+
+hunter_qt_prefix_path()

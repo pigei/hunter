@@ -1,8 +1,8 @@
 
-if(DEFINED HUNTER_CMAKE_PROJECTS_@lib@_@COMPONENT@_HUNTER_CMAKE_)
+if(DEFINED HUNTER_CMAKE_PROJECTS_Qt_CORE_HUNTER_CMAKE_)
   return()
 else()
-  set(HUNTER_CMAKE_PROJECTS_@lib@_@COMPONENT@_HUNTER_CMAKE_ 1)
+  set(HUNTER_CMAKE_PROJECTS_Qt_CORE_HUNTER_CMAKE_ 1)
 endif()
 
 include(hunter_add_package)
@@ -12,7 +12,7 @@ include(hunter_status_debug)
 
 hunter_pick_scheme(DEFAULT url_sha1_unpack_install)
 hunter_flat_download(
-    PACKAGE_NAME @lib@
-    PACKAGE_COMPONENT "@component@"
+    PACKAGE_NAME Qt
+    PACKAGE_COMPONENT "core"
 	PACKAGE_USR ${HUNTER_SERVER_USR} PACKAGE_PSW ${HUNTER_SERVER_PSW}
 )
