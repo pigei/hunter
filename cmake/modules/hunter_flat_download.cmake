@@ -393,7 +393,7 @@ function(hunter_flat_download)
       "-H${HUNTER_PACKAGE_HOME_DIR}"
       "-B${HUNTER_PACKAGE_BUILD_DIR}"
       "-DCMAKE_TOOLCHAIN_FILE=${HUNTER_DOWNLOAD_TOOLCHAIN}"
-      "-G${CMAKE_GENERATOR}"
+
   )
   hunter_print_cmd("${HUNTER_PACKAGE_HOME_DIR}" "${cmd}")
 

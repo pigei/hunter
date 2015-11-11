@@ -8,6 +8,8 @@ include(hunter_fatal_error)
 include(hunter_status_debug)
 include(hunter_status_print)
 
+
+
 # Continue initialization of key variables (also see 'hunter_initialize')
 #   * calculate toolchain-id
 #   * calculate config-id
@@ -76,6 +78,8 @@ macro(hunter_finalize)
 	if (NOT HUNTER_INSTALL_PREFIX STREQUAL HUNTER_FLAT_DOWNLOAD_PATH)
 	  list(APPEND CMAKE_PREFIX_PATH "${HUNTER_FLAT_DOWNLOAD_PATH}")
 	endif()
+	#additionally add Qt folder to prefix path
+	#hunter_qt_prefix_path()  #todo this is a patch to store the correct qt folder in the prefix path
   endif()
   
   if(ANDROID)
