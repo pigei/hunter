@@ -4,6 +4,7 @@
 include(CMakeParseArguments) # cmake_parse_arguments
 
 include(hunter_create_args_file)
+include(hunter_check_sha_file)
 include(hunter_find_stamps)
 include(hunter_internal_error)
 include(hunter_jobs_number)
@@ -116,8 +117,18 @@ function(hunter_flat_download)
     hunter_test_string_not_empty("${HUNTER_PACKAGE_SHA1}")
   endif() #else the sha is not needed
 
+  
+  
+  hunter_check_sha_file(
+	"${HUNTER_FLAT_DOWNLOAD_PATH}/${HUNTER_PACKAGE_NAME}-${ver}/hunter-cache"
+    "${HUNTER_PACKAGE_SHA1}"
+    HUNTER_SHA_EXISTS
+  )
+  
+  
+  
   hunter_make_directory(
-      "${HUNTER_FLAT_DOWNLOAD_PATH}/downloads/${HUNTER_PACKAGE_NAME}-${ver}"
+      "${HUNTER_FLAT_DOWNLOAD_PATH}/${HUNTER_PACKAGE_NAME}-${ver}/hunter-cache"
       "${HUNTER_PACKAGE_SHA1}"
       HUNTER_PACKAGE_DOWNLOAD_DIR
   )
@@ -232,26 +243,17 @@ function(hunter_flat_download)
         DEPENDS_ON_PACKAGE "${deps}"
     )
   endforeach()
-
-  if(EXISTS "${HUNTER_PACKAGE_DONE_STAMP}")
-    hunter_status_debug("Package already installed: ${HUNTER_PACKAGE_NAME}")
+  
+  
+  #check if already downloaded
+  if(${HUNTER_SHA_EXISTS})
+    hunter_status_debug("Package already downloaded: ${HUNTER_PACKAGE_NAME}")
     if(hunter_has_component)
       hunter_status_debug("Component: ${HUNTER_PACKAGE_COMPONENT}")
     endif()
     return()
   endif()
 
-  #check if already downloaded
-  if(EXISTS "${HUNTER_PACKAGE_DOWNLOAD_DIR}/SHA1")
-	file(READ "${HUNTER_PACKAGE_DOWNLOAD_DIR}/SHA1" _presentSHA)
-	if ("${_presentSHA}" STREQUAL "${HUNTER_PACKAGE_SHA1}")
-		 hunter_status_debug("Package already downloaded: ${HUNTER_PACKAGE_NAME}")
-		 if(hunter_has_component)
-			hunter_status_debug("Component: ${HUNTER_PACKAGE_COMPONENT}")
-		 endif()
-		 return()
-	endif()
-  endif()
   
   hunter_lock_directory(
       "${HUNTER_PACKAGE_DOWNLOAD_DIR}" HUNTER_ALREADY_LOCKED_DIRECTORIES
@@ -265,15 +267,6 @@ function(hunter_flat_download)
     )
   endif()
 
-  # While locking other instance can finish package building
-  if(EXISTS "${HUNTER_PACKAGE_DONE_STAMP}")
-    hunter_status_debug("Package already installed: ${HUNTER_PACKAGE_NAME}")
-    if(hunter_has_component)
-      hunter_status_debug("Component: ${HUNTER_PACKAGE_COMPONENT}")
-    endif()
-    return()
-  endif()
-
   # load from cache using SHA1 of args.cmake file
   file(REMOVE "${HUNTER_ARGS_FILE}")
   hunter_create_args_file(
@@ -281,17 +274,9 @@ function(hunter_flat_download)
   )
 
   # Check if package can be loaded from cache
-  hunter_load_from_cache()
+  #hunter_load_from_cache()
 
   if(HUNTER_CACHE_RUN)
-    return()
-  endif()
-
-  if(EXISTS "${HUNTER_PACKAGE_DONE_STAMP}")
-    hunter_status_debug("Package installed from cache: ${HUNTER_PACKAGE_NAME}")
-    if(hunter_has_component)
-      hunter_status_debug("Component: ${HUNTER_PACKAGE_COMPONENT}")
-    endif()
     return()
   endif()
 
