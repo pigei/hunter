@@ -29,7 +29,7 @@ hunter_add_version(
 hunter_cmake_args(Eigen CMAKE_ARGS EIGEN_ENABLE_TESTING=OFF)
 
 # Pick a download scheme
-hunter_pick_scheme(DEFAULT url_sha1_unpack)
+hunter_pick_scheme(DEFAULT url_sha1_unpack_install)
 
 # Download package.
 hunter_flat_download(PACKAGE_NAME Eigen PACKAGE_USR ${HUNTER_SERVER_USR} PACKAGE_PSW ${HUNTER_SERVER_PSW})

@@ -44,7 +44,7 @@ endif()
 
 
 # Pick a download scheme
-hunter_pick_scheme(DEFAULT url_sha1_unpack ) # use scheme for cmake projects
+hunter_pick_scheme(DEFAULT url_sha1_unpack_install ) # use scheme for cmake projects
 
 
 # Download package.
