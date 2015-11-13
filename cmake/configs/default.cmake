@@ -37,8 +37,14 @@ hunter_config(tclap VERSION 1.2.1)
 hunter_config(glew VERSION 1.10.0)
 hunter_config(wpdpack VERSION 4.1.0)
 hunter_config(qt-solutions VERSION 2015.02.19)
-hunter_config(nuverlicense VERSION 1.1.0)
+hunter_config(Qt5Ftp VERSION 5.1.0)
 hunter_config(opencv VERSION 2.4.10)
+hunter_config(ANN VERSION 1.1.2)
+
+hunter_config(nuverlicense VERSION 1.1.0)
+hunter_config(cryptlib VERSION 3.4.3.1)
+
+
 
 hunter_config(Android-Apk VERSION 1.1.5)
 hunter_config(Android-Build-Tools VERSION 22.0.1)

@@ -39,7 +39,7 @@ hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT core
 	URL "${HUNTER_PACKAGE_URL}/qtcore.tar.gz"
 	BUILD "msvc2013-amd64"
-	SHA1 606d92afc6461a2f1a36a910b33e7e98bf338170
+	SHA1 29584a97791137be1a729a1de887b1642a7089be
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT dbus

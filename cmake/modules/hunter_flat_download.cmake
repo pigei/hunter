@@ -211,7 +211,7 @@ function(hunter_flat_download)
 
   set(${root_name} "${${root_name}}" PARENT_SCOPE)
   set(ENV{${root_name}} "${${root_name}}")
-  hunter_status_print("${root_name}: ${${root_name}} (ver.: ${ver})")
+  hunter_status_debug("${root_name}: ${${root_name}} (ver.: ${ver})")
 
   # Same for the "snake case"
   string(REPLACE "-" "_" snake_case_root_name "${root_name}")
