@@ -1,0 +1,34 @@
+#Initialize Hunter from the JRC FTP repository
+
+#SET(HUNTER_STATUS_DEBUG ON)
+include("cmake/HunterGate.cmake")
+
+##########hunter location data
+set(HUNTER_SERVER_ADDRESS "@server_url@" CACHE STRING "FTP url used to download missing packages" FORCE)
+set(HUNTER_SERVER_FOLDER "@server_folder@" CACHE STRING "FTP url used to download missing packages" FORCE)
+
+set(HUNTER_SERVER_USR "@server_user@" CACHE STRING "FTP user")
+set(HUNTER_SERVER_PSW "" CACHE STRING "FTP password")
+SET(HUNTER_ROOT ${CMAKE_BINARY_DIR}/hunter CACHE STRING "Local root for downloaded Hunters")
+set(HUNTER_FLAT_DOWNLOAD_PATH "" CACHE PATH "Local storage for hunter downloaded packages")  #flat download to a common location
+
+STRING(COMPARE EQUAL "${HUNTER_SERVER_PSW}" "" no_auth)
+if (HUNTER_ENABLED)
+	if(no_auth)
+		#check if you have it in the environment
+		set(HUNTER_SERVER_PSW $ENV{HUNTER_SERVER_PSW} CACHE STRING "FTP password" FORCE)
+		STRING(COMPARE EQUAL "${HUNTER_SERVER_PSW}" "" no_auth)
+		if(no_auth)
+			MESSAGE("Missing authentication for FTP server ${HUNTER_SERVER_ADDRESS}")
+			MESSAGE(FATAL_ERROR "Please setup HUNTER_SERVER_PSW")
+		endif()
+	endif()
+
+
+
+	set(HUNTER_LOCATION "ftp://${HUNTER_SERVER_USR}:${HUNTER_SERVER_PSW}@${HUNTER_SERVER_ADDRESS}/${HUNTER_SERVER_FOLDER}/@hunter_name@")
+	set(HUNTER_SHA1 "@sha@")
+
+	MESSAGE(STATUS "[hunter_init] Hunter located at ${HUNTER_SERVER_ADDRESS}/${HUNTER_SERVER_FOLDER} using authentication user ${HUNTER_SERVER_USR}")
+
+endif()
