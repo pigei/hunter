@@ -103,7 +103,7 @@ function(hunter_apply_gate_settings)
   endforeach()
 
   # HUNTER_GATE_TOOLCHAIN_SHA1
-  hunter_calculate_toolchain_sha1("${hunter_self}" "${hunter_base}")
+  hunter_calculate_toolchain_sha1("${hunter_self}" "${hunter_base}" "${HUNTER_SKIP_TOOLCHAIN}")
 
   hunter_test_string_not_empty("${HUNTER_GATE_ROOT}")
   hunter_test_string_not_empty("${HUNTER_GATE_SHA1}")
