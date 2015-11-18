@@ -9,7 +9,7 @@ include(hunter_status_debug)
 include(hunter_status_print)
 include(hunter_test_string_not_empty)
 
-function(hunter_calculate_toolchain_sha1 hunter_self hunter_base)
+function(hunter_calculate_toolchain_sha1 hunter_self hunter_base hunter_skip_if_present)
   hunter_test_string_not_empty("${hunter_self}")
   hunter_test_string_not_empty("${hunter_base}")
   hunter_test_string_not_empty("${CMAKE_BINARY_DIR}")
@@ -27,6 +27,23 @@ function(hunter_calculate_toolchain_sha1 hunter_self hunter_base)
   set(create_script "${hunter_self}/scripts/create-toolchain-info.cmake")
   set(local_toolchain_info "${temp_project_dir}/toolchain.info")
 
+  if(hunter_skip_if_present)
+	if (EXISTS "${local_toolchain_info}")
+		#make sure at least the generator is the same
+		FILE(READ "${local_toolchain_info}" toolchain_content)
+		string(FIND "${toolchain_content}" "${CMAKE_GENERATOR}" same_generator)
+		string(FIND "${toolchain_content}" "${HUNTER_CONFIGURATION_TYPES}" same_configurations)	
+		if(same_generator AND same_configurations)
+		   hunter_status_debug("Already exists: ${global_toolchain_info}")
+		   hunter_status_debug("skip toolchain computation since user does not want it")
+		   file(SHA1 "${local_toolchain_info}" HUNTER_GATE_TOOLCHAIN_SHA1)
+		   set(HUNTER_GATE_TOOLCHAIN_SHA1 "${HUNTER_GATE_TOOLCHAIN_SHA1}" PARENT_SCOPE)
+		   return()
+	   endif()
+	endif()
+  endif()
+  
+  
   file(REMOVE_RECURSE "${local_toolchain_info}")
 
   if(HUNTER_BINARY_DIR)
@@ -89,7 +106,7 @@ function(hunter_calculate_toolchain_sha1 hunter_self hunter_base)
         "Generate failed: exit with code ${generate_result}"
     )
   endif()
-
+MESSAGE(${local_toolchain_info})
   file(SHA1 "${local_toolchain_info}" HUNTER_GATE_TOOLCHAIN_SHA1)
   set(HUNTER_GATE_TOOLCHAIN_SHA1 "${HUNTER_GATE_TOOLCHAIN_SHA1}" PARENT_SCOPE)
 
@@ -109,6 +126,7 @@ function(hunter_calculate_toolchain_sha1 hunter_self hunter_base)
 
   set(global_toolchain_info "${hunter_toolchain_id_path}/toolchain.info")
   if(EXISTS "${global_toolchain_info}")
+  	  MESSAGE("CALCULATE DONE GLOBAL1")
     hunter_status_debug("Already exists: ${global_toolchain_info}")
     return()
   endif()
@@ -116,6 +134,7 @@ function(hunter_calculate_toolchain_sha1 hunter_self hunter_base)
   hunter_lock_directory("${hunter_toolchain_id_path}" "")
   if(EXISTS "${global_toolchain_info}")
     hunter_status_debug("Already exists: ${global_toolchain_info}")
+	  MESSAGE("CALCULATE DONE GLOBAL")
     return()
   endif()
 
@@ -124,4 +143,6 @@ function(hunter_calculate_toolchain_sha1 hunter_self hunter_base)
   hunter_status_debug("Toolchain SHA1: ${HUNTER_GATE_TOOLCHAIN_SHA1}")
 
   file(REMOVE_RECURSE "${temp_build_dir}")
+  
+  MESSAGE("CALCULATE DONE")
 endfunction()
