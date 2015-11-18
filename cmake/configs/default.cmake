@@ -40,12 +40,27 @@ hunter_config(qt-solutions VERSION 2015.02.19)
 hunter_config(Qt5Ftp VERSION 5.1.0)
 hunter_config(opencv VERSION 2.4.10)
 hunter_config(ANN VERSION 1.1.2)
-
-hunter_config(nuverlicense VERSION 1.1.0)
+hunter_config(ZF VERSION 8.7.1)
 hunter_config(cryptlib VERSION 3.4.3.1)
+hunter_config(wm5 VERSION 5.13)
+hunter_config(qwt VERSION 6.1.2)
+hunter_config(ctemplate VERSION 2.3)
+
+hunter_config(cminpack VERSION 1.3.4)
+
+hunter_config(m5api VERSION 5.0.7)
+hunter_config(NIDAQ VERSION 15.1.1)
+
+hunter_config(nuverLicense VERSION 1.1.0)
+hunter_config(R2DLL VERSION 1.5.1.0) #QT5 version
+hunter_config(Rainstorm VERSION 1.0.0.5)
+hunter_config(sc-hsm-pkcs11 VERSION 1.0.0.1)
 
 
 
+
+
+#original hunter 0.12.25 configurations
 hunter_config(Android-Apk VERSION 1.1.5)
 hunter_config(Android-Build-Tools VERSION 22.0.1)
 hunter_config(Android-Google-Repository VERSION 19)

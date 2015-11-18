@@ -2,282 +2,282 @@
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT activeqt
 	URL "${HUNTER_PACKAGE_URL}/qtactiveqt.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 12ae26f8f1f1918cc818d0d3e3dc5a923802c99d
+	BUILD "msvc2013-x86"
+	SHA1 c92f16d63aa28d322e28b1d0581e8a80cedb1aa8
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT enginio
 	URL "${HUNTER_PACKAGE_URL}/qtenginio.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 87e2ebbc1b559c8cecfc918f1e65f9df33780933
+	BUILD "msvc2013-x86"
+	SHA1 9e8792a3a137931eced880f0502dff160d0e5b82
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT angle
 	URL "${HUNTER_PACKAGE_URL}/qtangle.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 6451f6e8994a34b2e56682367aa0ab5e37d92b5d
+	BUILD "msvc2013-x86"
+	SHA1 c9bbf50178e7de449cc8bd741d3164c004690c62
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT bluetooth
 	URL "${HUNTER_PACKAGE_URL}/qtbluetooth.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 cd580544f5777802bc6eda77378fbea9e84c39c7
+	BUILD "msvc2013-x86"
+	SHA1 608c948ce5e68b2de136fc34bbb86f4737ec6db1
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT clucene
 	URL "${HUNTER_PACKAGE_URL}/qtclucene.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 c7990dc75724affed1c795c36a4085252564285d
+	BUILD "msvc2013-x86"
+	SHA1 150e36987db5a3ac72251a26875dcf5f813831b5
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT concurrent
 	URL "${HUNTER_PACKAGE_URL}/qtconcurrent.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 4f88469803bcc9a1a4b28a6c35ea47a7bd801bd7
+	BUILD "msvc2013-x86"
+	SHA1 837ab29588fe8d1a05bd2ad9ecf396dd3aa1a1d1
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT core
 	URL "${HUNTER_PACKAGE_URL}/qtcore.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 d1126cdf4a4b0877271f131ed33d627e03126662
+	BUILD "msvc2013-x86"
+	SHA1 d2e008ceb054f581c7e2fe0586fec9e661cdf288
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT dbus
 	URL "${HUNTER_PACKAGE_URL}/qtdbus.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 24eee51740eb413c9a7d44005bc6fa9c508aac89
+	BUILD "msvc2013-x86"
+	SHA1 167d8e1870168b4b6e99c22ac5082ce40a3c9a9d
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT designer
 	URL "${HUNTER_PACKAGE_URL}/qtdesigner.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 646f29c11be114310e378f092a4a1399b72ff0b9
+	BUILD "msvc2013-x86"
+	SHA1 dbf404090f347947be5589709a127eeccb4d0e36
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT designercomponents
 	URL "${HUNTER_PACKAGE_URL}/qtdesignercomponents.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 222695ad6adb933f47a1012098865a03cdd2104d
+	BUILD "msvc2013-x86"
+	SHA1 003ad73a773553920b3e19a14040dd14c93529ed
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT gui
 	URL "${HUNTER_PACKAGE_URL}/qtgui.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 73e09ad909eaebd710c92badab7685f19a610fb0
+	BUILD "msvc2013-x86"
+	SHA1 a0ad6403ce9e1afcfe404cd537a0d021222d5706
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT help
 	URL "${HUNTER_PACKAGE_URL}/qthelp.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 cdb5f1b10323d29993dd08d372066398ea8b354a
+	BUILD "msvc2013-x86"
+	SHA1 80d2de56faf9290ad5cf955e2c3439718b2f656a
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT location
 	URL "${HUNTER_PACKAGE_URL}/qtlocation.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 d604b42817efba6cfa67f1fd961da81a38c956d2
+	BUILD "msvc2013-x86"
+	SHA1 428f5e30947652656758d0cc24520aec50ee8723
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT multimedia
 	URL "${HUNTER_PACKAGE_URL}/qtmultimedia.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 9ecf44e70889dc6e58624049c20dfa1f865bfa78
+	BUILD "msvc2013-x86"
+	SHA1 d5101c138b890a2e2beb34c3a3775b2cac21876c
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT multimediaquick_p
 	URL "${HUNTER_PACKAGE_URL}/qtmultimediaquick_p.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 b895dc75911cc15b69de3057b46acadad19fbc78
+	BUILD "msvc2013-x86"
+	SHA1 474cb4a0c2c013f590192353b6ca6f51f52cc89b
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT multimediawidgets
 	URL "${HUNTER_PACKAGE_URL}/qtmultimediawidgets.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 2e528b1b141161086fa6310e7048cc723951e3bb
+	BUILD "msvc2013-x86"
+	SHA1 7c5b3235730d765f3551861f1f405d6f46bac6d8
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT network
 	URL "${HUNTER_PACKAGE_URL}/qtnetwork.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 dd53df38fcc20493a9b83f3b6368c395f4bd7dfe
+	BUILD "msvc2013-x86"
+	SHA1 28023825dc79d4e1b6579432599d2050757afebb
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT nfc
 	URL "${HUNTER_PACKAGE_URL}/qtnfc.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 30e59b66dd9172edfecb7ef00c8befbfa147653d
+	BUILD "msvc2013-x86"
+	SHA1 0ddb39a6d63868f92cfc098e550d9737dc114489
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT opengl
 	URL "${HUNTER_PACKAGE_URL}/qtopengl.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 5ce062f30f4623b693b6df9d27e3fb0421b28a10
+	BUILD "msvc2013-x86"
+	SHA1 0d05ec447737d91fba1a6467cbe99aa83c32dfd4
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT openglextensions
 	URL "${HUNTER_PACKAGE_URL}/qtopenglextensions.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 971cfab9ca9f333a1f67ac98de41d03645e5d7c8
+	BUILD "msvc2013-x86"
+	SHA1 4b91144ab255bf6ef6dfa81b3c311006d6f3e6f5
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT platformheaders
 	URL "${HUNTER_PACKAGE_URL}/qtplatformheaders.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 bfd6d70643dae12092df1a7fcd9d9bd364adcfd5
+	BUILD "msvc2013-x86"
+	SHA1 cca4404cf5c41f84434b4c18f1ca9dbc2e518e24
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT platformsupport
 	URL "${HUNTER_PACKAGE_URL}/qtplatformsupport.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 5d8984ce4232e5b83adbc1901d08b97d646052c1
+	BUILD "msvc2013-x86"
+	SHA1 a387b0b5d6764676019e871ae762407cdd39a005
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT positioning
 	URL "${HUNTER_PACKAGE_URL}/qtpositioning.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 cf1ad5f08db02d43326ef3f84abd7aecdaf62c4e
+	BUILD "msvc2013-x86"
+	SHA1 d5945d65fa311993f84c6530c2df790330e6ad21
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT printsupport
 	URL "${HUNTER_PACKAGE_URL}/qtprintsupport.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 d18fcc466debd37ca7d28b1928f34ce373e06162
+	BUILD "msvc2013-x86"
+	SHA1 4996aeb4dd0947e21f69e27d66786bffdfc03522
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT qml
 	URL "${HUNTER_PACKAGE_URL}/qtqml.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 8dcd42a76efc34f9fa43a0ad0031fbdcd5191161
+	BUILD "msvc2013-x86"
+	SHA1 5bc6f5f82447e0f06cdd5ee51218161d8da94bc2
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT qmldevtools
 	URL "${HUNTER_PACKAGE_URL}/qtqmldevtools.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 a71dc5e95c06c9ea2408c346cc6aa387de0b215f
+	BUILD "msvc2013-x86"
+	SHA1 211546a9dbdadbed34e0c2dfb45a6710e995b751
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT quick
 	URL "${HUNTER_PACKAGE_URL}/qtquick.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 9e2d0425d52a5318442e34624d2ec834213db8e3
+	BUILD "msvc2013-x86"
+	SHA1 13d0baee35defca67e3edef024c06899782e553e
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT quickparticles
 	URL "${HUNTER_PACKAGE_URL}/qtquickparticles.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 366c6e54ae38a02444b55650ebe8a65fff3ee437
+	BUILD "msvc2013-x86"
+	SHA1 91b116d2a2077c420af4ecab9cf686c88c8663ff
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT quicktest
 	URL "${HUNTER_PACKAGE_URL}/qtquicktest.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 2ec3845e59b4df12c822911d3c41a3343bfbd689
+	BUILD "msvc2013-x86"
+	SHA1 540b0f4fa8b6c2bc22d246d121c81d3f1b9596b0
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT quickwidgets
 	URL "${HUNTER_PACKAGE_URL}/qtquickwidgets.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 2c00f7b42a848b186f790f687d3c8dbd76418505
+	BUILD "msvc2013-x86"
+	SHA1 b65a9ab59090d3ad76c007a13216aaa98c581f00
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT sensors
 	URL "${HUNTER_PACKAGE_URL}/qtsensors.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 2d65c046a6413eb5a9abba4e99d44d981d1fa3aa
+	BUILD "msvc2013-x86"
+	SHA1 68477a6575f7f7c47d2b492dc8500874e3145ae3
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT serialport
 	URL "${HUNTER_PACKAGE_URL}/qtserialport.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 400b9cc5cbb153c4297f7bb524391105b1b8307d
+	BUILD "msvc2013-x86"
+	SHA1 38807eae05b19741a5bf869618408bffd4ba6db2
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT sql
 	URL "${HUNTER_PACKAGE_URL}/qtsql.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 a9334b04a2c97888eced78c17963b64a3c59d069
+	BUILD "msvc2013-x86"
+	SHA1 956f890161acc53bee54c96f972fef6271ab5329
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT svg
 	URL "${HUNTER_PACKAGE_URL}/qtsvg.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 9e251e07f61af069029b9774ac59a54b23a5eb2f
+	BUILD "msvc2013-x86"
+	SHA1 07c0e2991aa26f83212e82f40ae9179da2f92940
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT test
 	URL "${HUNTER_PACKAGE_URL}/qttest.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 42cd4b9d54b6919e7179de112e603a8f4e98d010
+	BUILD "msvc2013-x86"
+	SHA1 845b4f06cee6613eae575e316ca1a17146ca2f3f
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT uiplugin
 	URL "${HUNTER_PACKAGE_URL}/qtuiplugin.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 e4132e3f7b8159b9be07ec0ef78703c40417f299
+	BUILD "msvc2013-x86"
+	SHA1 3db0d7002266f7f04caf95d06796d67783faf5e4
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT uitools
 	URL "${HUNTER_PACKAGE_URL}/qtuitools.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 19164b3a059ef307ea0c127d01cfc69435948df0
+	BUILD "msvc2013-x86"
+	SHA1 cd159cbcb24643472e0a0384ea2222bdedbb1b0d
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT webchannel
 	URL "${HUNTER_PACKAGE_URL}/qtwebchannel.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 4b1f6273a8d16e07813ba729860a3b5c3caa4b54
+	BUILD "msvc2013-x86"
+	SHA1 6db2cedcaac48d46398f406d6afcaedd8372b215
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT webkit
 	URL "${HUNTER_PACKAGE_URL}/qtwebkit.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 16941e0d552b8d89ab206e2339d1d3795a9d6df8
+	BUILD "msvc2013-x86"
+	SHA1 028a91e3e2cc17413bc94442efc6227fc56f7d4e
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT webkitwidgets
 	URL "${HUNTER_PACKAGE_URL}/qtwebkitwidgets.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 69d7b477c319fd1eb08a6f39d23e95e18b504897
+	BUILD "msvc2013-x86"
+	SHA1 7a47c905c4004cb712959e119fce0f4548dee20c
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT websockets
 	URL "${HUNTER_PACKAGE_URL}/qtwebsockets.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 f9dcac3ecda4d47bd7fb1852e01eeb6b8874490b
+	BUILD "msvc2013-x86"
+	SHA1 efbf6b6f0144f9862da279e8cc4d8cd13bb644d3
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT webview
 	URL "${HUNTER_PACKAGE_URL}/qtwebview.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 004095049dd9f0678f8930c356a8f6884df3cd7e
+	BUILD "msvc2013-x86"
+	SHA1 59641f74f659aa2526d6e18d5dee682e483589d6
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT widgets
 	URL "${HUNTER_PACKAGE_URL}/qtwidgets.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 b4aec51de851d6339177605dc18e40e328c89d3e
+	BUILD "msvc2013-x86"
+	SHA1 33fe1368bef5bdce10ad30e61be662777cc2afda
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT winextras
 	URL "${HUNTER_PACKAGE_URL}/qtwinextras.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 e9518d86de2094f0de0141324c423386ed8fe23a
+	BUILD "msvc2013-x86"
+	SHA1 f61e9e9357de85615614f1c89146717e1d2c795f
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT xml
 	URL "${HUNTER_PACKAGE_URL}/qtxml.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 15634fa66d57c52ba5a916d1471387c3870c674c
+	BUILD "msvc2013-x86"
+	SHA1 aa29fce3605f9dcc1eb38bafc6a076bfa7156e0e
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT xmlpatterns
 	URL "${HUNTER_PACKAGE_URL}/qtxmlpatterns.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 4b8c4aa62f819ebeed690a06a4077084207b712d
+	BUILD "msvc2013-x86"
+	SHA1 e20d60371f0189b7da4933015fcc4b7bfdb234eb
 )
 hunter_add_component_version( PACKAGE_NAME "Qt" VERSION	"5.5"
 	COMPONENT zlib
 	URL "${HUNTER_PACKAGE_URL}/qtzlib.tar.gz"
-	BUILD "msvc2013-amd64"
-	SHA1 49cd6c375057cf9019e6baed24843f91d829c0b3
+	BUILD "msvc2013-x86"
+	SHA1 b68f7e94bc2ded57339352a47a1f3f0f1584167b
 )

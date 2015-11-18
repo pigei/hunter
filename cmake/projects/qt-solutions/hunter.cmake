@@ -24,28 +24,30 @@ hunter_check_local_server() #verify that the local server has been set up
 
 SET(_buildType ${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH})
 
-# List of versions here...
-if ("${_buildType}" STREQUAL "msvc2013-amd64")
+#list of sha being here 
+#SHABEGIN
+SET(qt-solutions-msvc2013-amd64_SHA  9b3de2c20ac89e1dc877f05c73bf6117be291048)
+SET(qt-solutions-msvc2013-x86_SHA  feba9973434dcef3f9dcf89cda714e7882d7c2a7)
+SET(qt-solutions-msvc2010-x86_SHA  6eeee24b988cadd237abc3935e8252a9e8d63385)
+#SHAEND
+#list of sha ends here
 
-	hunter_add_version(
-		PACKAGE_NAME qt-solutions
-		VERSION     "2015.02.19"
-		URL			"${HUNTER_SERVER_URL}/qt-solutions/${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH}/qt-solutions-2015.02.19.tar.gz"
-		SHA1	    b78083c420f630df803513f6ad71908d88e61156
-	)
+SET(selected_sha ${qt-solutions-${_buildType}_SHA})
 
-elseif ("${_buildType}" STREQUAL "msvc2013-x86")
-
-	hunter_add_version(
-		PACKAGE_NAME qt-solutions
-		VERSION     "2015.02.19"
-		URL			"${HUNTER_SERVER_URL}/qt-solutions/${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH}/qt-solutions-2015.02.19.tar.gz"
-		SHA1	    97ab901ede9047c81682cc56d345107e734af519
-	)
-else()
+if ("${selected_sha}" STREQUAL "")
 	hunter_fatal_error("No tarball available for qt-solutions ${_buildType}"   WIKI "error.external.build.missing")
 endif()
-# Probably more versions for real packages...
+
+
+# List of versions here...
+
+hunter_add_version(
+	PACKAGE_NAME qt-solutions
+	VERSION     "2015.02.19"
+	URL			"${HUNTER_SERVER_URL}/qt-solutions/${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH}/qt-solutions-2015.02.19.tar.gz"
+	SHA1	    ${selected_sha}
+)
+
 
 
 

@@ -1,8 +1,8 @@
 # This is a header-like file, so include guards needed
-if(DEFINED HUNTER_CMAKE_PROJECTS_ZLIB_HUNTER_CMAKE_)
+if(DEFINED HUNTER_CMAKE_PROJECTS_CMINPACK_HUNTER_CMAKE_)
   return()
 else()
-  set(HUNTER_CMAKE_PROJECTS_ZLIB_HUNTER_CMAKE_ 1)
+  set(HUNTER_CMAKE_PROJECTS_CMINPACK_HUNTER_CMAKE_ 1)
 endif()
 
 # Load used modules
@@ -26,25 +26,24 @@ SET(_buildType ${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH})
 
 #list of sha being here 
 #SHABEGIN
-SET(zlib-msvc2013-amd64_SHA  9c096d64ffcefec33493dd034842b5d13f9d0b17)
-SET(zlib-msvc2013-x86_SHA  456c4965ce1d18fe3837a874d6e357366becb825)
-SET(zlib-msvc2010-x86_SHA  7f7ed6f01e068362356ac4f914407be715f43ec8)
+SET(cminpack-msvc2013-amd64_SHA  c3f3796f6458e2f928c8d773edb29add8c634db4)
+SET(cminpack-msvc2013-x86_SHA  73310b71fbefb0f8b075635139716eb660adbea1)
 #SHAEND
 #list of sha ends here
 
-SET(selected_sha ${zlib-${_buildType}_SHA})
+SET(selected_sha ${cminpack-${_buildType}_SHA})
 
 if ("${selected_sha}" STREQUAL "")
-	hunter_fatal_error("No tarball available for zlib ${_buildType}"   WIKI "error.external.build.missing")
+	hunter_fatal_error("No tarball available for cminpack ${_buildType}"   WIKI "error.external.build.missing")
 endif()
 
 
 # List of versions here...
 
 hunter_add_version(
-	PACKAGE_NAME zlib
-	VERSION     "1.2.8"
-	URL			"${HUNTER_SERVER_URL}/zlib/${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH}/zlib-1.2.8.tar.gz"
+	PACKAGE_NAME cminpack
+	VERSION     "1.3.4"
+	URL			"${HUNTER_SERVER_URL}/cminpack/${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH}/cminpack-1.3.4.tar.gz"
 	SHA1	    ${selected_sha}
 )
 
@@ -57,4 +56,4 @@ hunter_pick_scheme(DEFAULT url_sha1_unpack_install ) # use scheme for cmake proj
 
 # Download package.
 # Two versions of library will be build by default:
-hunter_flat_download(PACKAGE_NAME zlib PACKAGE_USR ${HUNTER_SERVER_USR} PACKAGE_PSW ${HUNTER_SERVER_PSW})
+hunter_flat_download(PACKAGE_NAME cminpack PACKAGE_USR ${HUNTER_SERVER_USR} PACKAGE_PSW ${HUNTER_SERVER_PSW})

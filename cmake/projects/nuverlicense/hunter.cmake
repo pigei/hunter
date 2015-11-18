@@ -24,20 +24,31 @@ hunter_check_local_server() #verify that the local server has been set up
 
 SET(_buildType ${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH})
 
-# List of versions here...
-if ("${_buildType}" STREQUAL "msvc2013-amd64")
+#list of sha being here 
+#SHABEGIN
+SET(nuverLicense-msvc2013-amd64_SHA  d1d044d4cb48433f6be2ed79f50c55acd9e6a29e)
+SET(nuverLicense-msvc2013-x86_SHA  8fceb258b939a3dfc5bb9839dc4cdb02216bee3f)
+SET(nuverLicense-msvc2010-amd64_SHA  673456daae965161efa9c7def1b6f483d99047ca)
+SET(nuverLicense-msvc2010-x86_SHA  bc6361c66e6e6608f47dcd78091c945e469556c2)
+#SHAEND
+#list of sha ends here
 
-	hunter_add_version(
-		PACKAGE_NAME nuverlicense
-		VERSION     "1.1.0"
-		URL			"${HUNTER_SERVER_URL}/nuverlicense/${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH}/nuverlicense-1.1.0.tar.gz"
-		SHA1	    d1d044d4cb48433f6be2ed79f50c55acd9e6a29e
-	)
+SET(selected_sha ${nuverLicense-${_buildType}_SHA})
 
-else ()
-	hunter_fatal_error("No tarball available for nuverlicense ${_buildType}"   WIKI "error.external.build.missing")
+if ("${selected_sha}" STREQUAL "")
+	hunter_fatal_error("No tarball available for nuverLicense ${_buildType}"   WIKI "error.external.build.missing")
 endif()
-# Probably more versions for real packages...
+
+
+# List of versions here...
+
+hunter_add_version(
+	PACKAGE_NAME nuverLicense
+	VERSION     "1.1.0"
+	URL			"${HUNTER_SERVER_URL}/nuverLicense/${HUNTER_MSVC_RUNTIME}-${HUNTER_MSVC_ARCH}/nuverLicense-1.1.0.tar.gz"
+	SHA1	    ${selected_sha}
+)
+
 
 
 
@@ -47,4 +58,4 @@ hunter_pick_scheme(DEFAULT url_sha1_unpack_install ) # use scheme for cmake proj
 
 # Download package.
 # Two versions of library will be build by default:
-hunter_flat_download(PACKAGE_NAME nuverlicense PACKAGE_USR ${HUNTER_SERVER_USR} PACKAGE_PSW ${HUNTER_SERVER_PSW})
+hunter_flat_download(PACKAGE_NAME nuverLicense PACKAGE_USR ${HUNTER_SERVER_USR} PACKAGE_PSW ${HUNTER_SERVER_PSW})

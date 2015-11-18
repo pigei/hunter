@@ -38,6 +38,9 @@ foreach ($d in $dir){
     #strip qt from names
     $packageName =  $d.Name
 
+	if (-not $packageName){
+		continue
+	}
     
     if ($packageName.StartsWith("Qt")){
         $packageName  =$packageName.Substring(2)
@@ -67,16 +70,43 @@ foreach ($d in $dir){
         $specificList += "$build/phrasebooks"
         $specificList += "$build/translations"
         $specificList += "$build/plugins/platforms"
+		$specificList += "$build/lib/cmake/Qt5LinguistTools"
+		$specificList += "$build/lib/cmake/Qt5"
+		$specificList += "$build/lib/qtmain*"
     } 
     
-    if ($packageName -eq "Gui"){
+    elseif ($packageName -eq "Gui"){
         $specificList += "$build/plugins/imageformats"
         $specificList += "$build/plugins/generic"
     }
-    if ($packageName -eq "Network"){
+    elseif ($packageName -eq "Network"){
         $specificList += "$build/plugins/bearer"
     }
-    #.....
+	elseif ($packageName -eq "PrintSupport"){
+        $specificList += "$build/plugins/printsupport"
+    }
+    elseif ($packageName -eq "Sql"){
+        $specificList += "$build/plugins/sqldrivers"
+    }
+    elseif ($packageName -eq "Svg"){
+        $specificList += "$build/plugins/iconengines"
+    }
+	elseif ($packageName -eq "Sensors"){
+        $specificList += "$build/plugins/sensors"
+        $specificList += "$build/plugins/sensorgestures"		
+    }
+	elseif ($packageName -eq "Multimedia"){
+        $specificList += "$build/plugins/mediaservice"
+        $specificList += "$build/plugins/playlistformats"		
+        $specificList += "$build/plugins/audio"			
+    }	
+	elseif ($packageName -eq "Qml"){
+        $specificList += "$build/plugins/qmltooling"		
+    }
+	elseif ($packageName -eq "Designer"){
+        $specificList += "$build/plugins/designer"		
+    }
+	#.....
     #..... 
     
     
