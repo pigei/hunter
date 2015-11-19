@@ -49,6 +49,7 @@ hunter_config(ctemplate VERSION 2.3)
 hunter_config(cminpack VERSION 1.3.4)
 
 hunter_config(m5api VERSION 5.0.7)
+hunter_config(icon VERSION 5.1.0.82)
 hunter_config(NIDAQ VERSION 15.1.1)
 
 hunter_config(nuverLicense VERSION 1.1.0)
