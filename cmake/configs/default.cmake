@@ -45,7 +45,7 @@ hunter_config(cryptlib VERSION 3.4.3.1)
 hunter_config(wm5 VERSION 5.13)
 hunter_config(qwt VERSION 6.1.2)
 hunter_config(ctemplate VERSION 2.3)
-
+hunter_config(cg VERSION 3.1.0)
 hunter_config(cminpack VERSION 1.3.4)
 
 hunter_config(m5api VERSION 5.0.7)

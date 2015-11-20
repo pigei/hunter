@@ -76,3 +76,8 @@ hunter_pick_scheme(DEFAULT url_sha1_unpack_install ) # use scheme for cmake proj
 # Download package.
 # Two versions of library will be build by default:
 hunter_flat_download(PACKAGE_NAME R2DLL PACKAGE_USR ${HUNTER_SERVER_USR} PACKAGE_PSW ${HUNTER_SERVER_PSW})
+
+hunter_add_package(cryptlib)
+hunter_add_package(ANN)
+hunter_add_package(zlib)
+hunter_add_package(qt-solutions)
