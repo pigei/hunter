@@ -52,9 +52,9 @@ macro(hunter_finalize)
   # * Check cache HUNTER_* variables is up-to-date
   # * Update cache if needed
   hunter_apply_gate_settings()
-
+MESSAGE("finalize self")
   hunter_calculate_self(
-      "${HUNTER_CACHED_ROOT}"
+      "${HUNTER_GATE_ROOT}"
       "${HUNTER_VERSION}"
       "${HUNTER_SHA1}"
       HUNTER_SELF

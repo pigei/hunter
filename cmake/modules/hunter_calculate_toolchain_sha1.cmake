@@ -126,7 +126,6 @@ MESSAGE(${local_toolchain_info})
 
   set(global_toolchain_info "${hunter_toolchain_id_path}/toolchain.info")
   if(EXISTS "${global_toolchain_info}")
-  	  MESSAGE("CALCULATE DONE GLOBAL1")
     hunter_status_debug("Already exists: ${global_toolchain_info}")
     return()
   endif()
@@ -134,7 +133,6 @@ MESSAGE(${local_toolchain_info})
   hunter_lock_directory("${hunter_toolchain_id_path}" "")
   if(EXISTS "${global_toolchain_info}")
     hunter_status_debug("Already exists: ${global_toolchain_info}")
-	  MESSAGE("CALCULATE DONE GLOBAL")
     return()
   endif()
 
@@ -144,5 +142,4 @@ MESSAGE(${local_toolchain_info})
 
   file(REMOVE_RECURSE "${temp_build_dir}")
   
-  MESSAGE("CALCULATE DONE")
 endfunction()

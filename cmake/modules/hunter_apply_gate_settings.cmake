@@ -72,7 +72,12 @@ function(hunter_apply_gate_settings)
   )
   hunter_set_config_location("${hunter_self}" config_location)
 
-  set(hunter_base "${HUNTER_GATE_ROOT}/_Base")
+	IF("${HUNTER_GATE_BASE}" STREQUAL "")
+		set(hunter_base "${HUNTER_GATE_ROOT}/_Base")
+	else()
+  		set(hunter_base "${HUNTER_GATE_BASE}/_Base")
+		set(HUNTER_CACHED_ROOT ${HUNTER_GATE_BASE} CACHE INTERNAL "")
+	endif()
 
   # HUNTER_GATE_CONFIG_SHA1
   hunter_calculate_config_sha1(
