@@ -433,6 +433,9 @@ function(hunter_flat_download)
         "Build step successful (dir: ${HUNTER_PACKAGE_HOME_DIR})"
     )
   else()
+  
+	#delete cached item
+    file(REMOVE_RECURSE "${HUNTER_FLAT_DOWNLOAD_PATH}/${HUNTER_PACKAGE_NAME}-${ver}/hunter-cache")
     hunter_fatal_error(
         "Build step failed (dir: ${HUNTER_PACKAGE_HOME_DIR}"
         WIKI "error.external.build.failed"
