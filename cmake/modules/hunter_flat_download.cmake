@@ -16,6 +16,7 @@ include(hunter_status_debug)
 include(hunter_status_print)
 include(hunter_test_string_not_empty)
 include(hunter_user_error)
+include(hunter_delete_sha_file)
 
 #will download a package in a common folder instead of [hunter-id]/[config-id]/[toolchain-id].
 #this is useful for pre-built packages that do not change often or that are already prepared in tarballs
@@ -434,7 +435,14 @@ function(hunter_flat_download)
     )
   else()
   
-	#delete cached item
+	#delete cached item	
+	MESSAGE(STATUS "removing ${HUNTER_FLAT_DOWNLOAD_PATH}/${HUNTER_PACKAGE_NAME}-${ver}/hunter-cache" )
+
+	hunter_delete_sha_file(
+		"${HUNTER_FLAT_DOWNLOAD_PATH}/${HUNTER_PACKAGE_NAME}-${ver}/hunter-cache"
+		"${HUNTER_PACKAGE_SHA1}"
+	)
+  
     file(REMOVE_RECURSE "${HUNTER_FLAT_DOWNLOAD_PATH}/${HUNTER_PACKAGE_NAME}-${ver}/hunter-cache")
     hunter_fatal_error(
         "Build step failed (dir: ${HUNTER_PACKAGE_HOME_DIR}"
