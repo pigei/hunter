@@ -1,0 +1,6 @@
+hunter_add_package(cryptlib)
+hunter_add_package(ANN)
+hunter_add_package(zlib)
+hunter_add_package(cryptlib)
+hunter_add_package(ANN)
+hunter_add_package(zlib)
